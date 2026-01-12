@@ -6,6 +6,7 @@
 
 import json
 import random
+from typing import Tuple
 
 
 MAX_HAND_SIZE = 6
@@ -29,7 +30,7 @@ def build_deck() -> list:
     return deck
 
 
-def reset_player_data(username: str) -> list:
+def reset_player_data(username: str) -> Tuple[list, int]:
     with open("players.json", "r") as file:
         original_content = file.read()
 
@@ -49,10 +50,11 @@ def reset_player_data(username: str) -> list:
     if new_content != original_content:
         with open("players.json", "w") as file:
             file.write(new_content)
-    return players[username]["hand"]
+
+    return players[username]["hand"], len(players[username]["deck"])
 
 
-def get_hand_for_player(username: str) -> list:
+def get_hand_for_player(username: str) -> Tuple[list, int]:
     with open("players.json", "r") as file:
         original_content = file.read()
 
@@ -84,10 +86,11 @@ def get_hand_for_player(username: str) -> list:
     if new_content != original_content:
         with open("players.json", "w") as file:
             file.write(new_content)
-    return players[username]["hand"]
+
+    return players[username]["hand"], len(players[username]["deck"])
 
 
-def draw_card_for_player(username: str) -> list | None:
+def draw_card_for_player(username: str) -> Tuple[list, int] | None:
     with open("players.json", "r") as file:
         original_content = file.read()
 
@@ -121,10 +124,10 @@ def draw_card_for_player(username: str) -> list | None:
         with open("players.json", "w") as file:
             file.write(new_content)
 
-    return player["hand"]
+    return player["hand"], len(player["deck"])
 
 
-def discard_card_for_player(username: str, card_id: int):
+def discard_card_for_player(username: str, card_id: int) -> Tuple[list, int] | None:
     with open("players.json", "r") as file:
         original_content = file.read()
 
@@ -152,4 +155,4 @@ def discard_card_for_player(username: str, card_id: int):
         with open("players.json", "w") as file:
             file.write(new_content)
 
-    return hand
+    return hand, len(players[username]["deck"])
