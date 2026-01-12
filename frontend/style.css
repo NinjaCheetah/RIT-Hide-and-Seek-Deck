@@ -52,14 +52,35 @@ h2 {
     font-size: 1vw;
 }
 
-.card input[type="checkbox"]:before {
-    background-color: white;
-    margin: auto;
+.card input {
+    visibility: hidden;
 }
 
-.card input[type="checkbox"]:after {
-    background-color: grey;
-    margin: auto;
+.card:hover {
+    background-color: gainsboro;
+}
+
+.card:has(> input:active) {
+    background-color: gainsboro;
+}
+
+/* Checkmark */
+.card .checkbox-container::after {
+    content: "";
+    position: absolute;
+    display: none;
+    left: 7px;
+    top: 3px;
+    width: 6px;
+    height: 12px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+/* Display checkmark when checked */
+.card input:checked~.checkbox-container::after {
+    display: block;
 }
 
 #hand_div {

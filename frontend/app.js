@@ -22,12 +22,18 @@ async function updateDisplay(hand) {
     document.getElementById("hand_div").innerHTML = `<p id="null_card"></p>`;
 
     for(let i = 0; i < hand.length; i++) {
-        const cardDiv = `<div class="card"><h2>${hand[i]["title"]}</h2>
+        const cardDiv = `<div class="card" id="card${i}div"><h2>${hand[i]["title"]}</h2>
         <p>${hand[i]["description"]}</p>
         <p><b>${hand[i]["cost"]}</b></p>
-        <input type="checkbox" id="card${i}" name="card" value="card${hand[i]["id"]}"/></div>`;
+        <input type="checkbox" id="card${i}" name="card" value="card${hand[i]["id"]}"/>`;
 
         document.getElementById("null_card").insertAdjacentHTML("afterend", cardDiv);
+
+        // Checkbox functionality for clicking the whole card
+        document.getElementById(`card${i}div`).addEventListener("click", () => {
+            console.log(`card ${i} clicked`);
+            document.getElementById(`card${i}`).checked = !document.getElementById(`card${i}`).checked;
+        });
     }
 
     // for (let i = 0; i < hand.length; i++) {
