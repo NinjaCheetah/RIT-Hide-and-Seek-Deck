@@ -171,3 +171,5 @@ cython_debug/
 
 # Don't commit the player data!
 players.json
+
+frontend/run-localhost.bat
