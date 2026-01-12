@@ -24,7 +24,8 @@ async function updateDisplay(hand) {
     for(let i = 0; i < hand.length; i++) {
         const cardDiv = `<div class="card"><h2>${hand[i]["title"]}</h2>
         <p>${hand[i]["description"]}</p>
-        <p><b>${hand[i]["cost"]}</b></p>`;
+        <p><b>${hand[i]["cost"]}</b></p>
+        <input type="checkbox" id="card${i}" name="card" value="card${hand[i]["id"]}"/></div>`;
 
         document.getElementById("null_card").insertAdjacentHTML("afterend", cardDiv);
     }

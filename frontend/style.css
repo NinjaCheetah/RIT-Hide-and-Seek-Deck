@@ -52,6 +52,16 @@ h2 {
     font-size: 1vw;
 }
 
+.card input[type="checkbox"]:before {
+    background-color: white;
+    margin: auto;
+}
+
+.card input[type="checkbox"]:after {
+    background-color: grey;
+    margin: auto;
+}
+
 #hand_div {
     margin-top: 6vh;
     display: flex;
