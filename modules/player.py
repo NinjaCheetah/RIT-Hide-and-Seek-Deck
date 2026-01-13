@@ -108,11 +108,11 @@ def draw_card_for_player(username: str) -> Tuple[list, int] | None:
     player = players[username]
     # Deck has no cards, return current hand with no modification.
     if len(player["deck"]) == 0:
-        return player["hand"]
+        return player["hand"], len(player["deck"])
 
     # Player is at the maximum hand size, return current hand with no modification.
     if len(player["hand"]) == 6:
-        return player["hand"]
+        return player["hand"], len(player["deck"])
 
     target_index = random.randint(0, len(player["deck"]) - 1)
     player["hand"].append(player["deck"].pop(target_index))
