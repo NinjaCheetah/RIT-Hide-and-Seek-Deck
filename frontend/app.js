@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("btn_draw").onclick = drawCard;
     document.getElementById("btn_reset").onclick = resetHand;
     document.getElementById("btn_discard").onclick = discardSelectedCards;
+
     parseURLParameters().then();
 });
 
@@ -64,7 +65,12 @@ async function getHand() {
     try {
         const apiResponse = await makeRequest(targetUrl);
         console.log(apiResponse);
-        await updateDisplay(apiResponse["hand"])
+        await updateDisplay(apiResponse["hand"]);
+
+        // Show main div, hide username
+        document.getElementById("mainDiv").style.display = "inline";
+        document.getElementById("username_div").style.display = "none";
+
     } catch (e) {
         console.error("failed to get player's hand, read error above");
     }

@@ -13,7 +13,22 @@ h2 {
 	font-family: Calibri, Arial, sans-serif;
     font-size: 1.6vw;
     margin-left: .2vw;
-    margin-right: .2vw
+    margin-right: .2vw;
+}
+
+p {
+    font-family: Calibri, Arial, sans-serif;
+    font-size: 3vh;
+}
+
+input {
+    font-family: Calibri, Arial, sans-serif;
+    font-size: 1.6vw;
+}
+
+/* By default, hide main div and show username */
+#mainDiv {
+    display: none
 }
 
 .buttons {
@@ -22,11 +37,11 @@ h2 {
     justify-content: center;
 }
 
-.draws {
+#username_div {
     display: flex;
 	column-gap: 20px;
     justify-content: center;
-    margin: auto;
+    max-height: 10vh;
 }
 
 .card {
@@ -45,6 +60,8 @@ h2 {
     max-height: 24vw; min-height: 24vw;
 
     font-family: Calibri, Arial, sans-serif;
+
+    transition: .5s;
 }
 
 .card p {
