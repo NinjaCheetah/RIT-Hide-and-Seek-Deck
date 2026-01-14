@@ -16,6 +16,7 @@ h2 {
     font-size: 3.2vw;
     margin-left: .4vw;
     margin-right: .4vw;
+    font-weight: bold;
 }
 
 p {
@@ -58,7 +59,7 @@ input {
     outline-width: 4px;
 
     max-width: 32vw; min-width: 32vw;
-    max-height: 48vw; min-height: 48vw;
+    max-height: fit-content; min-height: 58vw;
 
     font-family: Calibri, Arial, sans-serif;
 
@@ -67,7 +68,7 @@ input {
 
 .card p {
     margin-left : 8px;
-    font-size: 2.3vw;
+    font-size: 2.8vw;
 }
 
 .card input {
@@ -79,8 +80,9 @@ input {
 }
 
 #hand_div {
-    display:flex;
-    justify-content: center;
+    display: block;
+    position: relative;
+    right: 18.5vw
 }
 
 #cardSelect {

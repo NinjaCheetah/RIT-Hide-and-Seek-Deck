@@ -22,13 +22,20 @@ async function updateDisplay(hand) {
 
     document.getElementById("hand_div").innerHTML = `<p id="null_card"></p>`;
 
+    // Create necessary rows
+    const numRows = Math.ceil(hand.length / 2);
+    for(let j = 0; j < numRows; j++) {
+        document.getElementById("null_card").insertAdjacentHTML("afterend", `<div class="row row-cols-3" id="row${j}"><p id="null_card${j}"></p></div>`);
+    }
+
+    // For each card, add it to a row
     for(let i = 0; i < hand.length; i++) {
-        let cardDiv = `<div class="col-5"><div class="card" id="card${i}div"><h2>${hand[i]["title"]}</h2>
+        let cardDiv = `<div class="col-xxl"><div class="card" id="card${i}div"><h2>${hand[i]["title"]}</h2>
         <p>${hand[i]["description"]}</p>
         <p><b>${hand[i]["cost"]}</b></p>
         <input type="checkbox" id="card${i}" name="card" value="card${hand[i]["id"]}"/></div></div>`;
 
-        document.getElementById("null_card").insertAdjacentHTML("afterend", cardDiv);
+        document.getElementById(`null_card${Math.floor(i / 2)}`).insertAdjacentHTML("afterend", cardDiv);
 
         // Checkbox functionality for clicking the whole card
         document.getElementById(`card${i}div`).addEventListener("click", () => {
@@ -36,14 +43,6 @@ async function updateDisplay(hand) {
             document.getElementById(`card${i}`).checked = !document.getElementById(`card${i}`).checked;
         });
     }
-
-    // for (let i = 0; i < hand.length; i++) {
-    //     const newCard = `<p>
-    //                                 <input type="checkbox" id="card${i}" name="card" value="card${hand[i]["id"]}"/>
-    //                                 <label for="card${i}"><b>${hand[i]["title"]}</b> - ${hand[i]["description"]}</label>
-    //                             </p>`;
-    //     document.getElementById("null_card").insertAdjacentHTML("afterend", newCard);
-    // }
 }
 
 // Updates the current URL with the set parameters so that they won't get lost if the page reloads.
