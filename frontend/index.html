@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>RIT Hide & Seek</title>
+    <title>TigerGoSeek</title>
+    <script src="/assets/bootstrap/js/bootstrap.bundle.js"></script>
     <script src="/app.js"></script>
     <link rel="stylesheet" href="style.css"> 
 </head>
     <body>
-        <h1>RIT Hide & Seek</h1>
-        <div id="username_div">
+        <h1 class="page_title">TigerGoSeek</h1>
+        <div id="username_div" class="buttons">
             <p>Enter a Username</p>
             <input type="text" class="form-control" id="username_entry"/>
             <button type="button" id="btn_get_hand">Get Hand</button>
@@ -18,7 +19,9 @@
         <div class="main" id="mainDiv">
             <div class="buttons">
                 <button type="button" id="btn_draw">Draw Card</button>
-                <button type="button" id="btn_reset">Reset Hand</button>
+                <button type="button" data-bs-toggle="modal" data-bs-target="#resetHandConfirm">
+                    Reset Hand
+                </button>
             </div>
             <div id="hand_div">
                 <div class="container">
@@ -29,6 +32,24 @@
             <div class="buttons">
                 <button type="button" id="btn_discard">Discard Selected Cards</button>
             </div>
+        </div>
+
+        <div class="modal fade" id="resetHandConfirm" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="resetHandConfirmLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="resetHandConfirmLabel">Reset hand?</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                  <p>Are you sure you want to reset your hand? The seekers are not responsible for any cards lost due to an untimely hand wipe.</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn text-white" data-bs-dismiss="modal" style="background: #F76900;" onclick="resetHand()" href="javascript:void(0);">Confirm</button>
+              </div>
+            </div>
+          </div>
         </div>
     </body>
 </html>

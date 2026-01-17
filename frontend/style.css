@@ -1,31 +1,36 @@
 @import '/assets/bootstrap/css/bootstrap.min.css';
 
-body {
-	background-color: powderblue;
+:root {
+    font-family: Inter, sans-serif;
+    font-feature-settings: 'liga' 1, 'calt' 1; /* fix for Chrome */
 }
-		
+@supports (font-variation-settings: normal) {
+    :root { font-family: InterVariable, sans-serif; }
+}
+body {
+    font-family: Inter, sans-serif;
+    font-feature-settings: 'liga' 1, 'calt' 1; /* fix for Chrome */
+    background-color: #FFC38D;
+}
+
 h1 {
 	text-align: center;
-	font-family: Calibri, Arial, sans-serif;
     font-size: 6vw;
 }
-		
-h2 {
+
+#hand_div h2 {
 	text-align: center;
-	font-family: Calibri, Arial, sans-serif;
     font-size: 3.2vw;
     margin-left: .4vw;
     margin-right: .4vw;
     font-weight: bold;
 }
 
-p {
-    font-family: Calibri, Arial, sans-serif;
+#hand_div p {
     font-size: 6vh;
 }
 
 input {
-    font-family: Calibri, Arial, sans-serif;
     font-size: 1.6vw;
 }
 
@@ -61,8 +66,6 @@ input {
     max-width: 32vw; min-width: 32vw;
     max-height: fit-content; min-height: 58vw;
 
-    font-family: Calibri, Arial, sans-serif;
-
     transition: .5s;
 
     margin-top: 1vh; margin-bottom: 1vh;
@@ -91,7 +94,7 @@ input {
     display: flex;
 }
 
-button {
+.buttons button {
 	border: none;
 	padding: 5vw 10vw;
 
@@ -103,7 +106,7 @@ button {
     font-size: 3vw;
 }
 		
-button:active {
+.buttons button:active {
 	outline-color: black;
     outline-style: solid;
     outline-width: 4px;
