@@ -1,0 +1,110 @@
+@import '/assets/bootstrap/css/bootstrap.min.css';
+
+body {
+	background-color: powderblue;
+}
+		
+h1 {
+	text-align: center;
+	font-family: Calibri, Arial, sans-serif;
+    font-size: 6vw;
+}
+		
+h2 {
+	text-align: center;
+	font-family: Calibri, Arial, sans-serif;
+    font-size: 3.2vw;
+    margin-left: .4vw;
+    margin-right: .4vw;
+    font-weight: bold;
+}
+
+p {
+    font-family: Calibri, Arial, sans-serif;
+    font-size: 6vh;
+}
+
+input {
+    font-family: Calibri, Arial, sans-serif;
+    font-size: 1.6vw;
+}
+
+/* By default, hide main div and show username */
+#mainDiv {
+    display: none
+}
+
+.buttons {
+    display: flex;
+	column-gap: 20px;
+    justify-content: center;
+}
+
+#username_div {
+    display: inline;
+	column-gap: 20px;
+    justify-content: center;
+}
+
+.card {
+    margin: auto;
+
+    display: block;
+
+    background-color: white;
+    border-radius: 8px;
+
+    outline-color: black;
+    outline-style: solid;
+    outline-width: 4px;
+
+    max-width: 32vw; min-width: 32vw;
+    max-height: fit-content; min-height: 58vw;
+
+    font-family: Calibri, Arial, sans-serif;
+
+    transition: .5s;
+
+    margin-top: 1vh; margin-bottom: 1vh;
+}
+
+.card p {
+    margin-left : 8px;
+    font-size: 2.8vw;
+}
+
+.card input {
+    visibility: hidden;
+}
+
+.card:has(> input:checked) {
+    background-color: gainsboro;
+}
+
+#hand_div {
+    display: block;
+    position: relative;
+    right: 18.5vw;
+}
+
+#cardSelect {
+    display: flex;
+}
+
+button {
+	border: none;
+	padding: 5vw 10vw;
+
+	border-radius: 8px;
+    border-color: black;
+
+    background-color: white;
+
+    font-size: 3vw;
+}
+		
+button:active {
+	outline-color: black;
+    outline-style: solid;
+    outline-width: 4px;
+}

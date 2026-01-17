@@ -1,6 +1,6 @@
-// "app.js" from RIT Hide and Seek Deck
+// "app.js" from TigerGoSeek Deck
 // Copyright (c) 2026 NinjaCheetah
-// https://github.com/NinjaCheetah/RIT-Hide-and-Seek-Deck
+// https://github.com/NinjaCheetah/TigerGoSeek-Deck
 //
 // Provides the frontend code for interacting with the backend to display players' cards and trigger updates to them.
 
@@ -9,11 +9,12 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("btn_draw").onclick = drawCard;
     document.getElementById("btn_reset").onclick = resetHand;
     document.getElementById("btn_discard").onclick = discardSelectedCards;
+
     parseURLParameters().then();
 });
 
-let API_URL = "http://localhost:8000"
-//let API_URL = "https://api.rithideandseek.ninjacheetah.dev"
+//let API_URL = "http://localhost:8000"
+let API_URL = "https://api.tigergoseek.ninjacheetah.dev"
 
 // Updates the HTML on the page to show the cards in the player's hand.
 async function updateDisplay(hand) {
@@ -21,12 +22,26 @@ async function updateDisplay(hand) {
 
     document.getElementById("hand_div").innerHTML = `<p id="null_card"></p>`;
 
-    for (let i = 0; i < hand.length; i++) {
-        const newCard = `<p>
-                                    <input type="checkbox" id="card${i}" name="card" value="card${hand[i]["id"]}"/>
-                                    <label for="card${i}"><b>${hand[i]["title"]}</b> - ${hand[i]["description"]}</label>
-                                </p>`;
-        document.getElementById("null_card").insertAdjacentHTML("afterend", newCard);
+    // Create necessary rows
+    const numRows = Math.ceil(hand.length / 2);
+    for(let j = 0; j < numRows; j++) {
+        document.getElementById("null_card").insertAdjacentHTML("afterend", `<div class="row row-cols-3" id="row${j}"><p id="null_card${j}"></p></div>`);
+    }
+
+    // For each card, add it to a row
+    for(let i = 0; i < hand.length; i++) {
+        let cardDiv = `<div class="col-xxl"><div class="card" id="card${i}div"><h2>${hand[i]["title"]}</h2>
+        <p>${hand[i]["description"]}</p>
+        <p><b>${hand[i]["cost"]}</b></p>
+        <input type="checkbox" id="card${i}" name="card" value="card${hand[i]["id"]}"/></div></div>`;
+
+        document.getElementById(`null_card${Math.floor(i / 2)}`).insertAdjacentHTML("afterend", cardDiv);
+
+        // Checkbox functionality for clicking the whole card
+        document.getElementById(`card${i}div`).addEventListener("click", () => {
+            console.log(`card ${i} clicked`);
+            document.getElementById(`card${i}`).checked = !document.getElementById(`card${i}`).checked;
+        });
     }
 }
 
@@ -49,7 +64,12 @@ async function getHand() {
     try {
         const apiResponse = await makeRequest(targetUrl);
         console.log(apiResponse);
-        await updateDisplay(apiResponse["hand"])
+        await updateDisplay(apiResponse["hand"]);
+
+        // Show main div, hide username
+        document.getElementById("mainDiv").style.display = "inline";
+        document.getElementById("username_div").style.display = "none";
+
     } catch (e) {
         console.error("failed to get player's hand, read error above");
     }
@@ -65,7 +85,7 @@ async function drawCard() {
     try {
         const apiResponse = await makeRequest(targetUrl);
         console.log(apiResponse);
-        await updateDisplay(apiResponse["hand"])
+        await updateDisplay(apiResponse["hand"]);
     } catch (e) {
         console.error("failed to draw card for player, read error above");
     }
