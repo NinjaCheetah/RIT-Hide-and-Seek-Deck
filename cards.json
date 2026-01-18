@@ -74,7 +74,7 @@
         "count": 1,
         "title":"Curse of the Jammed Door",
         "description": "For the next 30 minutes, the seekers must roll two dice before entering any door. To enter the door, they must roll at least a 7. If they fail the roll, they must wait 5 minutes before trying again.",
-        "cost": ""
+        "cost": "Roll a die. If it's odd, this curse has no effect."
     },
     {
         "id": 11,
@@ -129,7 +129,7 @@
         "id": 18,
         "count": 1,
         "title": "Curse of the No Voice Zone",
-        "description": "For the next 15 minutes, the seekers cannot communicate verbally.",
+        "description": "For the next 7 minutes, the seekers cannot communicate verbally.",
         "cost": "Send a video of yourself signing a sentence containing at least 5 words."
     },
     {
@@ -177,8 +177,8 @@
     {
         "id": 25,
         "count": 1,
-        "title": "Curse of the Silent Scissorer",
-        "description": "Before the seekers can ask another question, they must win a game of rock paper scissors against a stranger. They must approach their opponent silently and start a game without saying anything, and must win best out of three. If they lose, they must wait 2 minutes and try again against a new opponent.",
+        "title": "Curse of the Scissorer",
+        "description": "Before the seekers can ask another question, they must win a best of three game of rock paper scissors against a stranger. If they lose, they must wait 2 minutes before trying again against a new opponent.",
         "cost": "Send a photo of a rock, a piece of paper, or a pair of scissors."
     },
     {
